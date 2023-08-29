@@ -1,0 +1,83 @@
+#video-container {
+    position: relative;  /* Parent container should be set to position: relative */
+    width: 640px;  /* Set width according to your video width */
+}
+
+#carbon-indicator {
+    position: absolute;  /* Set to absolute so it will be relative to the video container */
+    bottom: 80px;  /* 20px from the bottom */
+    right: 20px;  /* 20px from the right */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;  /* Round corners */
+    background-color: green;  /* Default color; will be changed by JS */
+    z-index: 101;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+#overlay-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    margin: 1rem;
+    width: calc(100% - 3rem);
+    height: calc(100% - 5rem);
+    max-height: 195px;
+    box-sizing: border-box;
+    z-index: 100;
+
+    position: absolute;
+    right: 1rem;
+    bottom: 3rem;
+}
+
+#overlay-inner-content {
+    width: 50%;
+    padding-left : 3rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 15px 15px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: scroll;
+}
+
+
+#overlay-inner-content p,
+#overlay-inner-content li {
+    color: #aaa;
+    font-size: 16px;
+
+}
+#overlay-inner-content p {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+#overlay-content a {
+    color: lightseagreen;
+}
+
+#close-overlay {
+    position: absolute; /* Position the button absolutely */
+    top: 0; /* Position from the top */
+    left: 0; /* Position from the left */
+    margin: 0.5rem; /* Adjust margin for spacing */
+    padding: 0.25rem 0.5rem; /* Add padding for better click area */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}

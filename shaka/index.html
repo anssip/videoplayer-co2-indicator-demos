@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Shaka Player compiled library: -->
+    <script src="player/shaka-player.compiled.js"></script>
+    <!-- Your application source: -->
+    <script src="init-player.js"></script>
+    <script src="carbon-plugin.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Carbon Video - Shaka demos</h1>
+<div id="video-container">
+    <video id="video"
+       width="640"
+       poster="//shaka-player-demo.appspot.com/assets/poster.jpg" src=""
+       controls autoplay playsinline></video>
+
+    <div id="carbon-indicator" ></div>
+    <div id="overlay-content">
+        <div id="overlay-inner-content">
+            <button id="close-overlay">X</button>
+            <p>This video has the following carbon cost breakdown:</p>
+            <ul>
+                <li>Production: 1 tCO2</li>
+                <li>Transcoding: 0.003 tCO2</li>
+                <li>Delivery: 0.001 tCO2</li>
+            </ul>
+            <p>Overall carbon cost score: 5/10</p>
+            <p>Learn more at <a href="https://carbon.video">https://carbon.video</a></p>
+        </div>
+    </div>
+</div>
+
+<p>Click on the links to below to play videos with different carbon footprints:</p>
+<div id="playlist">
+    <ul>
+        <li>
+            <a href='https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd'
+                data-carbon-id="66734506-46b4-456b-b8e8-87b42edcd0c6">Star wars
+            </a> (medium carbon footprint)
+        </li>
+        <li>
+            <a href="https://storage.googleapis.com/shaka-demo-assets/sintel/dash.mpd"
+               data-carbon-id="66734506-46b4-456b-b8e8-87b1111cd0c6">
+                Sintel
+            </a> (high carbon footprint)
+        </li>
+    </ul>
+</div>
+</body>
+</html>
