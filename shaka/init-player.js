@@ -32,7 +32,8 @@ async function initPlayer() {
     player = new shaka.Player();
     player.addEventListener('error', onErrorEvent);
 
-    plugin = new CarbonVideoPlugin(player, 'video', 'carbon-indicator');
+    plugin = new CarbonVideoPlugin({videoId: 'video', indicatorId: 'carbon-indicator'});
+    play("https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd", "66734506-46b4-456b-b8e8-87b42edcd0c6");
 }
 
 function play(url, carbonId) {

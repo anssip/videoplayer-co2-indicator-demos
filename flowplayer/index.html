@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Shaka Player compiled library: -->
-    <script src="player/shaka-player.compiled.js"></script>
     <!-- Your application source: -->
     <script src="init-player.js"></script>
     <script src="../carbon.video/carbon-plugin.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../carbon.video/style.css">
+    <link rel="stylesheet" href="//cdn.flowplayer.com/releases/native/3/stable/style/flowplayer.css" />
+
 </head>
 <body>
-<h1>Carbon Video - Shaka demos</h1>
+<script src="//cdn.flowplayer.com/releases/native/3/stable/default/flowplayer.min.js"></script>
+<h1>Carbon Video - Flowplayer demos</h1>
 <div id="video-container">
-    <video id="video"
-       width="640"
-       poster="//shaka-player-demo.appspot.com/assets/poster.jpg" src=""
-       controls autoplay playsinline></video>
+    <div id="player">
+    </div>
 
     <div id="carbon-indicator" ></div>
     <div id="overlay-content">
@@ -37,8 +36,8 @@
 <div id="playlist">
     <ul>
         <li>
-            <a href='https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd'
-                data-carbon-id="66734506-46b4-456b-b8e8-87b42edcd0c6">Star wars
+            <a href='//edge.flowplayer.org/bauhaus.mp4'
+               data-carbon-id="66734506-46b4-456b-b8e8-87b42edcd0c6">Bauhaus
             </a> (medium carbon footprint)
         </li>
         <li>

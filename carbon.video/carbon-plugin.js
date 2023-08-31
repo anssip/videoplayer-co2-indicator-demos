@@ -1,12 +1,18 @@
 
 class CarbonVideoPlugin {
-    constructor(player, videoId, indicatorId, carbonVideoId) {
-        this.player = player;
-        this.videoId = videoId;
-        this.indicatorId = indicatorId;
+    // TODO: refactor to an options object as constructor arg. Should have the option to pass in the video object or the video id
+    constructor({ containerId, video, videoId, indicatorId, carbonVideoId }) {
+        this.containerId = containerId;
+        if (videoId) {
+            this.video = document.getElementById(videoId);
+        } else if (video) {
+            this.video = video;
+        } else {
+            throw new Error("Must pass in either video or videoId");
+        }
+
         this.carbonVideoId = carbonVideoId;
-        this.video = document.getElementById(this.videoId);
-        this.indicator = document.getElementById(this.indicatorId);
+        this.indicator = document.getElementById(indicatorId);
         this.overlayShowing = false;
         const overlayContainer = document.getElementById('overlay-content');
         const overlayInnerContainer = document.getElementById('overlay-inner-content');
@@ -30,12 +36,14 @@ class CarbonVideoPlugin {
             console.log("click");
             if (event.target !== overlayInnerContainer) {
                 overlayContainer.style.display = 'none';
+                this.overlayShowing = false;
             }
         });
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 overlayContainer.style.display = 'none';
+                this.overlayShowing = false;
             }
         });
 
@@ -52,6 +60,7 @@ class CarbonVideoPlugin {
 
     initCarbonIndicatorAutohide() {
         const showIndicator = () => {
+            console.log("showIndicator");
             this.indicator.classList.remove('fade-out', 'hidden'); // Show the indicator
             clearTimeout(this.fadeOutTimer); // Clear any existing timer
 
@@ -65,12 +74,13 @@ class CarbonVideoPlugin {
         };
 
         // Show the indicator when the video or controls are interacted with
-        this.video.addEventListener('mousemove', showIndicator);
-        this.video.addEventListener('touchstart', showIndicator);
-        this.video.addEventListener('focus', showIndicator);
-        this.video.addEventListener('controlsshown', showIndicator);
+        const elem = this.containerId ? document.getElementById(this.containerId) : this.video;
+        console.log("adding listeners", elem);
+        elem.addEventListener('mousemove', showIndicator);
+        elem.addEventListener('touchstart', showIndicator);
+        elem.addEventListener('focus', showIndicator);
+        elem.addEventListener('controlsshown', showIndicator);
 
-        // Optionally, you may also want to initially show the indicator when the video loads
         showIndicator();
     }
     async init() {
